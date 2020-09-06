@@ -1,3 +1,5 @@
+package problems
+
 import base.Problem
 
 object Problem1 : Problem {

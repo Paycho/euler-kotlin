@@ -1,8 +1,7 @@
-package utilities
-
-import Problem1
-import Problem2
 import base.Problem
+import problems.Problem1
+import problems.Problem2
+import problems.Problem3
 
 object ProblemIndex {
   private val problemMap = HashMap<String, Problem>()
@@ -10,6 +9,7 @@ object ProblemIndex {
   init {
     problemMap[Problem1.getNumber()] = Problem1
     problemMap[Problem2.getNumber()] = Problem2
+    problemMap[Problem3.getNumber()] = Problem3
   }
 
   fun printProblems() {

@@ -1,5 +1,3 @@
-import utilities.ProblemIndex
-
 fun main(args: Array<String>) {
   println("Enter a problem number, or press Ctrl-D to quit.")
   var input: String? = readLine()

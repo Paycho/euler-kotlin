@@ -1,10 +1,12 @@
+package problems
+
 import base.Problem
 
 object Problem2 : Problem {
   fun sumOfEvenFibonacciValues(limit: Int): Int {
     var f1 = 1
     var f2 = 0
-    var next = 1
+    var next: Int;
     var sum = 0
     while (true) {
       next = f1 + f2
