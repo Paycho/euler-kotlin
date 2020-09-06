@@ -2,22 +2,22 @@ import base.Problem
 
 object Problem2 : Problem {
   fun sumOfEvenFibonacciValues(limit: Int): Int {
-    var f1 = 1;
-    var f2 = 0;
-    var next = 1;
-    var sum = 0;
+    var f1 = 1
+    var f2 = 0
+    var next = 1
+    var sum = 0
     while (true) {
-      next = f1 + f2;
-      f2 = f1;
-      f1 = next;
+      next = f1 + f2
+      f2 = f1
+      f1 = next
       if (next > limit) {
-        break;
+        break
       }
       if (f1 % 2 == 0) {
-        sum += f1;
+        sum += f1
       }
     }
-    return sum;
+    return sum
   }
 
   override fun getNumber(): String {
@@ -33,6 +33,6 @@ object Problem2 : Problem {
   }
 
   override fun solve(): String {
-    return sumOfEvenFibonacciValues(4000000).toString();
+    return sumOfEvenFibonacciValues(4000000).toString()
   }
 }
