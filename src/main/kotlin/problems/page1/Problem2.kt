@@ -1,4 +1,4 @@
-package problems
+package problems.page1
 
 import base.Problem
 

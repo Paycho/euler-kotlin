@@ -1,15 +1,26 @@
+
 import base.Problem
-import problems.Problem1
-import problems.Problem2
-import problems.Problem3
 
 object ProblemIndex {
   private val problemMap = HashMap<String, Problem>()
 
   init {
-    problemMap[Problem1.getNumber()] = Problem1
-    problemMap[Problem2.getNumber()] = Problem2
-    problemMap[Problem3.getNumber()] = Problem3
+    generateProblemMap();
+  }
+
+  private fun generateProblemMap() {
+    for (page in 1 until 50) {
+      for (problem in (50 * (page - 1)) until (50 * (page - 1) + 50)) {
+        try {
+          val className = "problems.page$page.Problem$problem";
+          val problemClass: Class<*> = Class.forName(className);
+          val problemInstance = problemClass.kotlin.objectInstance;
+          problemMap[(problemInstance as Problem).getNumber()] = problemInstance;
+        } catch (e: ClassNotFoundException) {
+          // Expected, carry on!
+        }
+      }
+    }
   }
 
   fun printProblems() {
