@@ -13,7 +13,11 @@ fun main(args: Array<String>) {
   println("Problem numbers go from ${ProblemIndex.minimumProblem} to ${ProblemIndex.maximumProblem}\n\n")
   var input: String? = readLine()
   while (input != null) {
-    val command = input.split(" ")
+    var command = input.split(" ")
+    if (command.size == 1) {
+      input = "solve $input"
+      command = input.split(" ")
+    }
     when {
       command[0] == "desc" -> {
         ProblemIndex.describe(command[1])
