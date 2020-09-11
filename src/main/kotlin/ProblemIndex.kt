@@ -31,6 +31,6 @@ object ProblemIndex {
 
   fun describe(number: String) {
     println("Describing problem $number:")
-    println(problemMap[number]?.getDescription() ?: "Invalid Problem Number")
+    println(problemMap[number]?.getDescription()?.trimIndent() ?: "Invalid Problem Number")
   }
 }
