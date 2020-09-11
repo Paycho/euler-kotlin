@@ -1,7 +1,9 @@
 package problems.page1
 
-import base.Problem
 import kotlin.math.sqrt
+
+import base.Problem
+import utils.Primes.isPrime
 
 object Problem7 : Problem {
 
@@ -30,28 +32,6 @@ object Problem7 : Problem {
       }
     }
     return numberToTest
-  }
-
-  private fun isPrime(number: Long): Boolean {
-    if (number <= 1) {
-      return false
-    }
-    if (number <= 3) {
-      return true
-    }
-
-    if (number % 2L == 0L || number % 3L == 0L) {
-      return false
-    }
-
-    var test = 5L
-    while (test * test <= number){
-      if (number % test == 0L || number % (test + 2L) == 0L) {
-        return false
-      }
-      test += 6L
-    }
-    return true
   }
 
   override fun getNumber(): String {
