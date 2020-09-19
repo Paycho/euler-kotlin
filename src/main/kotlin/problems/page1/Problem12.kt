@@ -17,7 +17,6 @@ object Problem12 : Problem {
       divisors = findDivisors(triangleNumber)
       triangleIndex++
     }
-    verify(triangleNumber, divisors)
     return triangleNumber
   }
 
@@ -31,30 +30,6 @@ object Problem12 : Problem {
       divisors *= (entry.count + 1)
     }
     return divisors;
-  }
-
-  /**
-   * Verifies the number of divisors by slowly iterating through all possible divisors
-   */
-  private fun verify(triangleNumber: Long, numDivisors: Long) {
-    println("Verifying that $triangleNumber has $numDivisors divisors...")
-    val divisors = TreeSet<Long>()
-    divisors.add(triangleNumber)
-    divisors.add(1L)
-    var divisor = 2L
-    while (divisor < divisors.last()) {
-      if (triangleNumber % divisor == 0L) {
-        divisors.add(divisor)
-        divisors.add(triangleNumber / divisor)
-      }
-      divisor++
-    }
-    if (divisors.size == numDivisors.toInt()) {
-      println("Verified.")
-      return
-    }
-    println("Actually, $triangleNumber has ${divisors.size} divisors :(")
-    throw RuntimeException("Could not verify divisor count")
   }
 
   override fun getNumber(): String {
