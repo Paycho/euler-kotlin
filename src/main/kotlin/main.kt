@@ -7,7 +7,7 @@ private val helpString = """
     solve [problem number] - print solution/timing for problem
 """.trimIndent()
 
-fun main(args: Array<String>) {
+fun main(unusedArgs: Array<String>) {
   ProblemIndex.generateProblemMap()
   println(helpString)
   println("Problem numbers go from ${ProblemIndex.minimumProblem} to ${ProblemIndex.maximumProblem}\n\n")
