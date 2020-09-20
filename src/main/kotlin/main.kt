@@ -10,7 +10,7 @@ private val helpString = """
 fun main(unusedArgs: Array<String>) {
   ProblemIndex.generateProblemMap()
   println(helpString)
-  println("Problem numbers go from ${ProblemIndex.minimumProblem} to ${ProblemIndex.maximumProblem}\n\n")
+  ProblemIndex.printAvailableProblems()
   var input: String? = readLine()
   while (input != null) {
     var command = input.split(" ")
@@ -34,7 +34,6 @@ fun main(unusedArgs: Array<String>) {
       }
     }
     println(helpString)
-    println("Problem numbers go from ${ProblemIndex.minimumProblem} to ${ProblemIndex.maximumProblem}\n\n")
     input = readLine()
   }
 }

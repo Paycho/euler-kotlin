@@ -1,27 +1,23 @@
 
 import base.Problem
+import org.reflections.Reflections
 
 object ProblemIndex {
   private val problemMap = HashMap<String, Problem>()
-  val minimumProblem = 1;
-  var maximumProblem = 1;
 
   fun generateProblemMap() {
-    for (page in 1 until 50) {
-      for (problem in (50 * (page - 1)) until (50 * (page - 1) + 50)) {
-        try {
-          val className = "problems.page$page.Problem$problem";
-          val problemClass: Class<*> = Class.forName(className);
-          val problemInstance = problemClass.kotlin.objectInstance;
-          problemMap[(problemInstance as Problem).getNumber()] = problemInstance;
-          if (problem > maximumProblem) {
-            maximumProblem = problem;
-          }
-        } catch (e: ClassNotFoundException) {
-          // Expected, carry on!
-        }
+    val reflections = Reflections("problems")
+    val problemSet = reflections.getSubTypesOf(Problem::class.javaObjectType)
+    for (entry in problemSet) {
+      val problem = entry.kotlin.objectInstance
+      if (problem != null) {
+        problemMap[problem.getNumber()] = problem
       }
     }
+  }
+
+  fun printAvailableProblems() {
+    println("Available problems: ${problemMap.keys}")
   }
 
   fun solveProblem(number: String) {
