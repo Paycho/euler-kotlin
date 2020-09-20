@@ -1,26 +1,13 @@
 package problems.page1
 
 import base.Problem
-import java.util.*
+import utils.Primes
 
 object Problem3 : Problem {
 
   fun largestPrimeFactor(number: Long): Long {
-    var limit = number
-    var test = 2L
-    val factors = TreeSet<Long>()
-    var factorString = "The factors of $number are: "
-    while (test < limit) {
-      if (limit % test == 0L) {
-        factorString += " $test"
-        factors.add(test)
-        limit /= test
-        continue
-      }
-      test++
-    }
-    factors.add(limit)
-    println(factorString)
+    val factors = Primes.factor(number)
+    println("The factors of $number are ${factors.entrySet()}")
     return factors.last()
   }
 
